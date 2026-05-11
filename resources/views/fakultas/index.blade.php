@@ -1,4 +1,10 @@
-<h2>Data Fakultas</h2>
-@foreach ($result as $item)
-    {{ $item->nama }} - {{  $item->singkatan}} - {{ $item->dekan }} <br/>
-@endforeach
+@extends('main')
+
+@section('content')
+
+    <h1>Data Fakultas</h1>
+    <table border = "1" cellpadding "10">
+    </table>
+
+
+@endsection
