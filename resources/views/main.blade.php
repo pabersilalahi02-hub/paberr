@@ -345,21 +345,24 @@
               </li>
               <li class="nav-item">
                 <a href="{{ route('fakultas.index') }}" class="nav-link">
-                  <i class="nav-icon bi bi-palette"></i>
+                  <i class="nav-icon bi bi-bank"></i>
                   <p>Fakultas</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ url('prodi') }}" class="nav-link">
-                  <i class="nav-icon bi bi-palette"></i>
+                  <i class="nav-icon bi bi-map"></i>
                   <p>Program Studi</p>
                 </a>
               </li>
               {{-- Menu Fakultas , Prodi , Berita --}}
               <li class="nav-item">
-                <a href="../generate/theme.html" class="nav-link">
-                  <i class="nav-icon bi bi-palette"></i>
-                  <p>Theme Generate</p>
+                <a href="{{ route('periode.index') }}" class="nav-link">
+                  <i class="nav-icon bi bi-box-seam-fill"></i>
+                  <p
+                  >Periode
+                    <i class="nav-arrow bi bi-chevron-right"></i>
+                  </p>
                 </a>
               </li>
               <li class="nav-item">
@@ -777,7 +780,7 @@
             <!--begin::Row-->
             <div class="row">
               <div class="col-sm-6">
-                <h3 class="mb-0">Unfixed Layout</h3>
+                <h3 class="mb-0">@yield('title')</h3>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
@@ -801,7 +804,7 @@
                 <!-- Default box -->
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Title</h3>
+                    <h3 class="card-title">@yield('card-title')</h3>
 
                     <div class="card-tools">
                       <button
