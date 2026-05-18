@@ -10,9 +10,9 @@ Route::get('/', function () {
     return view('fakultas.create');
 });
 
-Route::resource('fakultas', FakultasController::class);
+Route::resource('/fakultas', FakultasController::class);
 
-Route::resource('periode', PeriodeController::class);
+Route::resource('/periode', PeriodeController::class);
 
-Route::resource('berita', BeritaController::class);
-Route::get('/prodi', [ProdiController::class, 'index']);
+Route::resource('/berita', BeritaController::class);
+Route::resource('/prodi', ProdiController::class);

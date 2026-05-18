@@ -42,7 +42,7 @@ class FakultasController extends Controller
         ]);
 
         //simpan data ke tabel fakultas
-        Fakultas::create($input);
+        Fakultas::create($input);           
         
 
         //redirect ke halaman index fakultas
