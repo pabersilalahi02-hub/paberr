@@ -11,20 +11,19 @@ class ProdiController extends Controller
     /**
      * Display a listing of the resource.
      */
-  
-        public function index()
-            {
+    public function index()
+    {
         $prodis = Prodi::with('fakultas')->get();
         return view('prodi.index', compact('prodis'));
-            }
+    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $fakultas = Fakultas::all();
-        return view ('prodi.create', compact('fakultas'));
+        $fakultas = Fakultas::all(); // untuk list dropdown fakultas
+        return view('prodi.create', compact('fakultas'));
     }
 
     /**
@@ -32,6 +31,7 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
+        // validasi data
         $input = $request->validate([
             'nama_prodi' => 'required|unique:prodis',
             'singkatan' => 'required|max:2',
@@ -39,8 +39,10 @@ class ProdiController extends Controller
             'fakultas_id' => 'required'
         ]);
 
-        Prodi::created($input);
+        // simpan data ke tabel prodi
+        Prodi::create($input);
 
+        // redirect ke halaman index prodi
         return redirect()->route('prodi.index');
     }
 
@@ -71,8 +73,11 @@ class ProdiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Prodi $prodi)
+    public function destroy($prodi)
     {
-        //
+        $prodi = Prodi::find($prodi, 'id');
+        // dd($prodi);
+        $prodi->delete(); // delete from prodi where id = $prodi
+        return redirect()->route('prodi.index')->with('success', 'Data program studi berhasil dihapus'); // redirect ke halaman index prodi
     }
 }

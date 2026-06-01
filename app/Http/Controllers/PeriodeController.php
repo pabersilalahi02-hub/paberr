@@ -12,11 +12,10 @@ class PeriodeController extends Controller
      */
     public function index()
     {
-        //
-        $result = Periode::all (); //select*from periode
+        // akses model Periode 
+        $result = Periode::all(); // select * from periode
         // dd($result);
         return view('periode.index', compact('result'));
-        
     }
 
     /**
@@ -32,13 +31,16 @@ class PeriodeController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->validate([
-            'tahun_akademik' => 'required|unique:periode',
-            'kode_smt' => 'required'
+        // validasi data
+        $request->validate([
+            'tahun_akademik' => 'required',
+            'kode_smt' => 'required',
         ]);
 
-        Periode::create($input);
-        
+        // simpan data ke database
+        Periode::create($request->all());
+
+        // redirect ke halaman index dengan pesan sukses
         return redirect()->route('periode.index');
     }
 
@@ -47,7 +49,7 @@ class PeriodeController extends Controller
      */
     public function show(Periode $periode)
     {
-        // 
+        //
     }
 
     /**
@@ -69,8 +71,11 @@ class PeriodeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Periode $periode)
+    public function destroy($periode)
     {
-        //
+        $periode = Periode::find($periode, 'id');
+        // dd($periode);
+        $periode->delete(); // delete from periode where id = $periode
+        return redirect()->route('periode.index')->with('success', 'Data periode berhasil dihapus'); // redirect ke halaman index periode
     }
 }

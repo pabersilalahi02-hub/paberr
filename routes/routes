@@ -1,3 +1,0 @@
-use App\Http\Controllers\ProdiController;
-
-Route::get('/prodi', [ProdiController::class, 'index']);
