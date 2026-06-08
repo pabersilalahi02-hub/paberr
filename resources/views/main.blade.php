@@ -241,6 +241,16 @@
                             <li class="user-footer">
                                 <a href="#" class="btn btn-outline-secondary">Profile</a>
                                 <a href="#" class="btn btn-outline-danger float-end">Sign out</a>
+                                <!-- Authentication -->
+                                <form method="POST" action="{{ route('logout') }}" class="inline">
+                                     @csrf
+
+                                     <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();" class="btn btn-outline-danger float-end">
+                                     {{ __('Sign Out') }}
+                            </x-dropdown-link>
+                        </form>
                             </li>
                             <!--end::Menu Footer-->
                         </ul>

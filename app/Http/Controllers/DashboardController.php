@@ -20,6 +20,6 @@ class DashboardController extends Controller
         from laravelsi4c.mahasiswas m
         group by left(m.npm,2)");
 
-        return view('dashboard', compact('grafikmhs', 'grafik_angkatan'));
+        return view('dashboard-adminlte', compact('grafikmhs', 'grafik_angkatan'));
     }
 }
